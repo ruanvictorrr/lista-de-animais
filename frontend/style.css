@@ -1,0 +1,184 @@
+:root {
+  --bg: #eef2ee;
+  --ink: #1f2a24;
+  --soft: #5a6b60;
+  --forest: #2f5a48;
+  --line: #dbe3dd;
+  --danger: #b2503f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+header {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 32px 24px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+header p {
+  margin: 2px 0 0;
+  color: var(--soft);
+  font-size: 0.85rem;
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 10px 24px 50px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 18px;
+}
+
+@media (max-width: 700px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.panel h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  margin: 0 0 14px;
+  color: var(--forest);
+}
+
+label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--soft);
+  margin: 12px 0 4px;
+}
+
+label:first-of-type {
+  margin-top: 0;
+}
+
+input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font: inherit;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--forest);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 10px;
+  border: none;
+  border-radius: 7px;
+  background: var(--forest);
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-ghost {
+  background: none;
+  color: var(--soft);
+  margin-top: 6px;
+}
+
+.lista h2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cartao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+}
+
+.cartao:last-child {
+  border-bottom: none;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selo {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #eaf1ec;
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+}
+
+.nome {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.meta {
+  font-size: 0.78rem;
+  color: var(--soft);
+}
+
+.acoes button {
+  border: none;
+  background: none;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.acoes button:hover {
+  background: #f1f4f1;
+}
+
+.acoes .excluir:hover {
+  color: var(--danger);
+}
+
+.vazio {
+  text-align: center;
+  padding: 30px 0;
+  color: var(--soft);
+  font-size: 0.88rem;
+}
