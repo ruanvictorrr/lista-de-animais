@@ -10,7 +10,8 @@
 <body>
 
 <header>
-  <div><h1>Cadastro de Animais</h1></div>
+  <span style="font-size:1.8rem">🐾</span>
+  <div><h1>Cadastro de Animais</h1><p>Registro simples de entrada, saída e edição</p></div>
 </header>
 
 <main>
@@ -46,12 +47,12 @@ async function carregar() {
   lista.innerHTML = animais.length ? animais.map(a => `
     <div class="cartao">
       <div class="info">
-        <div class="selo">${(a.nome || "?")[0].toUpperCase()}</div>
+        <div class="selo">${(a.nome || "?")[0]}</div>
         <div><div class="nome">${a.nome}</div><div class="meta">${a.especie}${a.idade ? " · " + a.idade + " anos" : ""}</div></div>
       </div>
       <div class="acoes">
-        <button onclick='editar(${JSON.stringify(a)})'>Editar</button>
-        <button class="excluir" onclick="excluir(${a.id})">Excluir</button>
+        <button onclick='editar(${JSON.stringify(a)})'>✎</button>
+        <button class="excluir" onclick="excluir(${a.id})">🗑</button>
       </div>
     </div>`).join("") : `<div class="vazio">Nenhum animal cadastrado ainda.</div>`;
 }
