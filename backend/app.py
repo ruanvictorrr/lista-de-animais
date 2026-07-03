@@ -15,13 +15,6 @@ conn.close()
 def home():
     return redirect("/index.html")
 
-@app.route("/animais", methods=["GET"])
-def listar():
-    conn = get_conn()
-    linhas = conn.execute("SELECT * FROM animais").fetchall()
-    conn.close()
-    return jsonify([{"id": l[0], "nome": l[1], "especie": l[2], "idade": l[3]} for l in linhas])
-
 @app.route("/animais", methods=["POST"])
 def criar():
     dados = request.json
@@ -30,6 +23,13 @@ def criar():
     conn.commit()
     conn.close()
     return jsonify({"ok": True})
+
+@app.route("/animais", methods=["GET"])
+def listar():
+    conn = get_conn()
+    linhas = conn.execute("SELECT * FROM animais").fetchall()
+    conn.close()
+    return jsonify([{"id": l[0], "nome": l[1], "especie": l[2], "idade": l[3]} for l in linhas])
 
 @app.route("/animais/<int:id>", methods=["PUT"])
 def atualizar(id):

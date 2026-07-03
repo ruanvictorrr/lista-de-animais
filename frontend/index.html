@@ -10,8 +10,7 @@
 <body>
 
 <header>
-  <span style="font-size:1.8rem">🐾</span>
-  <div><h1>Cadastro de Animais</h1><p>Registro simples de entrada, saída e edição</p></div>
+  <div><h1>Cadastro de Animais</h1></div>
 </header>
 
 <main>
@@ -19,9 +18,9 @@
     <h2 id="tituloForm">Novo registro</h2>
     <form onsubmit="salvar(event)">
       <label>Nome</label>
-      <input id="nome" required placeholder="Ex: Mel">
+      <input id="nome" required placeholder="Ex: Caramelo">
       <label>Espécie</label>
-      <input id="especie" required placeholder="Ex: Gato">
+      <input id="especie" required placeholder="Ex: Cachorro">
       <label>Idade</label>
       <input id="idade" type="number" min="0" placeholder="Anos">
       <button class="btn" type="submit" id="btnSalvar">Adicionar</button>
@@ -47,18 +46,17 @@ async function carregar() {
   lista.innerHTML = animais.length ? animais.map(a => `
     <div class="cartao">
       <div class="info">
-        <div class="selo">${(a.nome || "?")[0]}</div>
         <div><div class="nome">${a.nome}</div><div class="meta">${a.especie}${a.idade ? " · " + a.idade + " anos" : ""}</div></div>
       </div>
       <div class="acoes">
-        <button onclick='editar(${JSON.stringify(a)})'>✎</button>
-        <button class="excluir" onclick="excluir(${a.id})">🗑</button>
+        <button onclick='editar(${JSON.stringify(a)})'>Editar</button>
+        <button class="excluir" onclick="excluir(${a.id})">Excluir</button>
       </div>
     </div>`).join("") : `<div class="vazio">Nenhum animal cadastrado ainda.</div>`;
 }
 
-async function salvar(e) {
-  e.preventDefault();
+async function salvar(evento) {
+  evento.preventDefault();
   const dados = {
     nome: nome.value.trim(),
     especie: especie.value.trim(),
@@ -70,9 +68,9 @@ async function salvar(e) {
   carregar();
 }
 
-function editar(a) {
-  nome.value = a.nome; especie.value = a.especie; idade.value = a.idade ?? "";
-  editandoId = a.id;
+function editar(animal) {
+  nome.value = animal.nome; especie.value = animal.especie; idade.value = animal.idade ?? "";
+  editandoId = animal.id;
   tituloForm.textContent = "Editando registro";
   btnSalvar.textContent = "Salvar alterações";
   btnCancelar.style.display = "block";
